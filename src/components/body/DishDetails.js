@@ -8,10 +8,8 @@ const DishDetails = (props) => {
                 <CardImg top src={props.dish.image} alt={props.dish.name} />
                 <CardBody style={{ textAlign: "left"}}>
                     <CardTitle>{props.dish.name}</CardTitle>
-                    <CardText>
-                        <p>{props.dish.description}</p>
-                        <p>{props.dish.price}/=</p>
-                    </CardText>
+                    <CardText>{props.dish.description} </CardText>
+                    <CardText>{props.dish.price}/= </CardText>
                     <hr />
                     <LoadComments comments = {props.dish.comments} />
                 </CardBody>
