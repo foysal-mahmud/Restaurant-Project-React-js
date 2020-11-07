@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from './Loading';
 // import { connect } from 'react-redux';
 
 // const mapStateToProps = state => {
@@ -26,7 +27,8 @@ class Home extends Component {
         document.title = "Spyder Restaurant";
         return (
             <div>
-                
+                <h1>Just Loading........</h1>
+                <Loading />
             </div>
         )
     }

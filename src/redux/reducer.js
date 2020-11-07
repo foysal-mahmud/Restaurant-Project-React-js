@@ -1,7 +1,9 @@
+import { createForms } from 'react-redux-form';
 import { combineReducers } from 'redux';
 import COMMENTS from '../data/comments';
-import DISHES from '../data/dishes';
+// import DISHES from '../data/dishes';
 import * as actionTypes from './actionTypes';
+import { InitialContactForm } from './forms';
 
 // const initialState = {
 //     dishes: DISHES,
@@ -9,8 +11,20 @@ import * as actionTypes from './actionTypes';
 //     // sample: "Hello World"
 // }
 
-const dishReducer = (dishState = DISHES, action) => {
+const dishReducer = (dishState = { isLoading: false, dishes: [] }, action) => { // dishState = DISHES
     switch(action.type) {
+        case actionTypes.DISHES_LOADING:
+            return {
+                ...dishState,
+                isLoading: true,
+                dishes: []
+            }
+        case actionTypes.LOAD_DISHES:
+            return {
+                ...dishState,
+                isLoading: false,
+                dishes: action.payload
+            }
         default:
             return dishState;
     }
@@ -39,7 +53,10 @@ const commentReducer = (commentState = COMMENTS, action) => {
 
 export const Reducer = combineReducers({
     dishes: dishReducer,
-    comments: commentReducer
+    comments: commentReducer,
+    ...createForms({
+        feedback: InitialContactForm
+    })
 })
 
 
